@@ -38,12 +38,12 @@ public class Ram {
         
         
         //Tranformando os dados de "String" para "Double"
-        Double dadoRamDouble = Double.valueOf(dadoRamString);
-        Double dadoTotalRamlDouble = Double.valueOf(dadoTotalRamString);
+        Double dadoRamDouble = Double.valueOf(dadoRamString.substring(0, 1));
+        Double dadoTotalRamlDouble = Double.valueOf(dadoTotalRamString.substring(0, 1));
         
 
         // Realizando a conta para calcular a porcentagem de uso
-        setTotalRam((dadoRamDouble * 100) / dadoTotalRamlDouble);
+        totalRam = (dadoRamDouble * 100) / dadoTotalRamlDouble;
         
         
         //Inserindo os dados no banco

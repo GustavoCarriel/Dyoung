@@ -40,9 +40,9 @@ public class Disco {
             
             
             //Tranformando os dados de "String" para "Double"
-            Double dadoDiscoTotalDouble = Double.valueOf(dadoDiscoTotalString.substring(0, 3));
-            Double dadoDiscoEcritaDouble = Double.valueOf(dadoDiscoEcritaString.substring(0, 1));
-            Double dadoDiscoLeituraDouble = Double.valueOf(dadoDiscoLeituraString.substring(0, 1));
+            Double dadoDiscoTotalDouble = Double.parseDouble(dadoDiscoTotalString.substring(0, 3));
+            Double dadoDiscoEcritaDouble = Double.parseDouble(dadoDiscoEcritaString.substring(0, 1));
+            Double dadoDiscoLeituraDouble = Double.parseDouble(dadoDiscoLeituraString.substring(0, 1));
             
             
             // Realizando a conta para calcular a porcentagem de uso
