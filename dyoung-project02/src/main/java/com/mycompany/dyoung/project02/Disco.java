@@ -16,7 +16,7 @@ public class Disco {
     Conexao con = new Conexao();  // Conexão com o banco de dados
     JdbcTemplate banco = con.getConnection();
     DiscoGrupo discoGrupo = new DiscoGrupo();  // API Looca - pegando dados do Disco
-    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
+//    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
     
     
     
@@ -52,7 +52,7 @@ public class Disco {
             
             //Inserindo os dados no banco
             String insertDisco = "INSERT INTO dado_disco (uso_disco, status_coleta, fk_totem, fk_posto)VALUES (?, 1, ?, ?);";
-            banco.update(insertDisco, df.format(getTotalDisco()), 1, 4);
+            banco.update(insertDisco, getTotalDisco(), 1, 4);
             
             
             //Exibindo os dados

@@ -17,7 +17,7 @@ public class Cpu {
     Processador cpu = new Processador(); // API Looca - pegando dados da CPU
     JdbcTemplate banco = con.getConnection();
     Temperatura temperatura = new Temperatura(); // API Looca - pegando dados da Temperatura da CPU
-    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
+//    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
     
     
     
@@ -38,7 +38,7 @@ public class Cpu {
         
         // Inserindo no banco de dados
         String insert = "INSERT INTO dado_cpu (uso_cpu, status_coleta, fk_totem, fk_posto)VALUES (?, 1, ?, ?);";
-        banco.update(insert, df.format(getDadoCpu()), 1, 4);
+        banco.update(insert, getDadoCpu(), 1, 4);
         
         
         // Exibindo no console o resultado

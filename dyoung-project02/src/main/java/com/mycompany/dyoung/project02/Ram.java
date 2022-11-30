@@ -15,7 +15,7 @@ public class Ram {
     Memoria mem = new Memoria();  // API Looca - pegando dados da Ram
     Conexao con = new Conexao();  // Conexão com o banco de dados
     JdbcTemplate banco = con.getConnection();
-    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
+//    DecimalFormat df = new DecimalFormat("##.00");  // Formatar dados para colocar no banco
     
     
     // Atributos
@@ -48,7 +48,7 @@ public class Ram {
         
         //Inserindo os dados no banco
         String insertRam = "INSERT INTO dado_ram (uso_ram, status_coleta, fk_totem, fk_posto)VALUES (?, 1, ?, ?);";
-        banco.update(insertRam, df.format(getTotalRam()), 1, 4);
+        banco.update(insertRam, getTotalRam(), 1, 4);
         
                 
         //Exibindo os dados
