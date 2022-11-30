@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Ram {
     
     //Objetos
-    Totem t = new Totem();
     Memoria mem = new Memoria();  // API Looca - pegando dados da Ram
     Conexao con = new Conexao();  // Conexão com o banco de dados
     JdbcTemplate banco = con.getConnection();
@@ -23,7 +22,7 @@ public class Ram {
     private Double totalRam = 0.0;
     
     
-    public void inserirDadosRam(){
+    public void inserirDadosRam(Integer id, Integer fk){
         
         //Pegando os dados da RAM = Memória RAM transformando, exibindo 
         //e guardando no banco de dados
@@ -49,7 +48,7 @@ public class Ram {
         
         //Inserindo os dados no banco
         String insertRam = "INSERT INTO dado_ram (uso_ram, status_coleta, fk_totem, fk_posto)VALUES (?, 1, ?, ?);";
-        banco.update(insertRam, df.format(getTotalRam()), t.getIdTotem(), t.getFk_posto());
+        banco.update(insertRam, df.format(getTotalRam()), 1, 4);
         
                 
         //Exibindo os dados

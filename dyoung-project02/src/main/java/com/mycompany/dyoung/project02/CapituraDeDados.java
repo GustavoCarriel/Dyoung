@@ -12,7 +12,24 @@ import java.util.TimerTask;
  * @author gucar
  */
 public class CapituraDeDados extends javax.swing.JFrame {
+private Integer fk_posto;
+private Integer idTotem;
 
+    public Integer getFk_posto() {
+        return fk_posto;
+    }
+
+    public void setFk_posto(Integer fk_posto) {
+        this.fk_posto = fk_posto;
+    }
+
+    public Integer getIdTotem() {
+        return idTotem;
+    }
+
+    public void setIdTotem(Integer idTotem) {
+        this.idTotem = idTotem;
+    }
     /**
      * Creates new form CapituraDeDados
      */
@@ -27,11 +44,11 @@ public class CapituraDeDados extends javax.swing.JFrame {
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                cpu.inserirDadoCpu();
-                disco.inseirDadosDisco();
-                ram.inserirDadosRam();
+                cpu.inserirDadoCpu(getIdTotem(), getFk_posto());
+                disco.inseirDadosDisco(getIdTotem(), getFk_posto());
+                ram.inserirDadosRam(getIdTotem(), getFk_posto());
             }
-        }, 0, 2000);
+        }, 0, 1000);
     }
 
     /**

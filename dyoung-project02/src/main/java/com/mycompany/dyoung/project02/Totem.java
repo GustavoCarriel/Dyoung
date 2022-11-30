@@ -13,6 +13,7 @@ public class Totem {
     // Objetos
     Conexao con = new Conexao(); // Conexão com o banco de dados
     JdbcTemplate banco = con.getConnection();
+    CapituraDeDados cd = new CapituraDeDados();
     
     
     // Atributos
@@ -31,15 +32,16 @@ public class Totem {
         List<Totem> buscarFuncionario = banco.query("SELECT * FROM totem", 
                 new BeanPropertyRowMapper<>(Totem.class));
         
-        for (Totem totem : buscarFuncionario) {
-            if(totem.getLoginTotem().equals("dsa") && totem.getSenhaTotem().equals("das")){
-                possuiCadastro = true;
-                setIdTotem(totem.getIdTotem());
-                setFk_posto(totem.getFk_posto());
-            } else {
-                
-            }
-        }
+//        for (Totem totem : buscarFuncionario) {
+//            if(totem.getLoginTotem().equals(usuario) && totem.getSenhaTotem().equals(senha)){
+//                possuiCadastro = true;
+//                cd.setVisible(true);
+//                cd.setIdTotem(totem.getIdTotem());
+//                cd.setFk_posto(totem.getFk_posto());
+//            } else {
+//                
+//            }
+//        }
         return possuiCadastro;
     }
     

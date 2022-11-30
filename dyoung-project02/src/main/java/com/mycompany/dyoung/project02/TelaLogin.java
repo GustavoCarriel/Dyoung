@@ -4,6 +4,10 @@
  */
 package com.mycompany.dyoung.project02;
 
+import java.util.List;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 /**
  *
  * @author gucar
@@ -155,20 +159,26 @@ public class TelaLogin extends javax.swing.JFrame {
         
         Totem t = new Totem();
         CapituraDeDados cd = new CapituraDeDados();
+        Conexao con = new Conexao(); // Conexão com o banco de dados
+        JdbcTemplate banco = con.getConnection();
         
         
         String usuarioLogin = txtEmail.getText();
         String usuarioSenha = txtSenha.getText();
         
+        List<Totem> buscarFuncionario = banco.query("SELECT * FROM totem", 
+                new BeanPropertyRowMapper<>(Totem.class));
         
-        boolean usuarioEncontrado = t.buscarLogin(usuarioLogin, usuarioSenha);
-        
-        
-        if(usuarioEncontrado == true){
-            cd.setVisible(true);
-        } else {
-            System.out.println("Usuario não encontrado!");
+        for (Totem totem : buscarFuncionario) {
+            if(totem.getLoginTotem().equals(usuarioLogin) && totem.getSenhaTotem().equals(usuarioSenha)){
+                cd.setVisible(true);
+                cd.setIdTotem(totem.getIdTotem());
+                cd.setFk_posto(totem.getFk_posto());
+            } else {
+                
+            }
         }
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**

@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Disco {
     
     // Objetos
-    Totem t = new Totem();
     Conexao con = new Conexao();  // Conexão com o banco de dados
     JdbcTemplate banco = con.getConnection();
     DiscoGrupo discoGrupo = new DiscoGrupo();  // API Looca - pegando dados do Disco
@@ -27,7 +26,7 @@ public class Disco {
     
     
     // Métodos
-    public void inseirDadosDisco(){
+    public void inseirDadosDisco(Integer id, Integer fk){
         
         // Listando todos os discos da maquina
         List<com.github.britooo.looca.api.group.discos.Disco> discos = discoGrupo.getDiscos();
@@ -48,12 +47,12 @@ public class Disco {
             
             // Realizando a conta para calcular a porcentagem de uso
             Double totalUso = dadoDiscoEcritaDouble + dadoDiscoLeituraDouble;
-            Double totalDisco = (totalUso * 100) / dadoDiscoTotalDouble;
+            totalDisco = (totalUso * 100) / dadoDiscoTotalDouble;
             
             
             //Inserindo os dados no banco
             String insertDisco = "INSERT INTO dado_disco (uso_disco, status_coleta, fk_totem, fk_posto)VALUES (?, 1, ?, ?);";
-            banco.update(insertDisco, df.format(getTotalDisco()), t.getIdTotem(), t.getFk_posto());
+            banco.update(insertDisco, df.format(getTotalDisco()), 1, 4);
             
             
             //Exibindo os dados
